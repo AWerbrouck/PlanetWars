@@ -15,7 +15,7 @@ for line in sys.stdin:
         move([])
     else:
         for planet in my_planets:
-            dest = min(other_planets, abs(key=lambda p: p['x'] - planet['x']))
+            dest = min(other_planets, key=lambda p: p['ship_count'])
             if planet['ship_count'] > dest['ship_count'] + 5:
                 amount = planet['ship_count'] - dest['ship_count']
                 move([{
@@ -25,10 +25,6 @@ for line in sys.stdin:
                 }])
             else:
                 move([])
-                    
-
-
-
 
 # def OptimalDistance(my_planets, other_planets):
 #     return True
