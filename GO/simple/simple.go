@@ -1,16 +1,18 @@
 package main
 
-import "fmt"
-import "os"
-import "log"
-import "bufio"
+import (
+	"bufio"
+	"fmt"
+	"log"
+	"os"
+)
 
-func main(){
-  scanner := bufio.NewScanner(os.Stdin)
-  for scanner.Scan() {
-    fmt.Println(scanner.Text())     
-  }
-  if err := scanner.Err(); err != nil {
-    log.Println(err)
-  }
+func main() {
+	scanner := bufio.NewScanner(os.Stdin)
+	for scanner.Scan() {
+		fmt.Println(scanner.Text())
+	}
+	if err := scanner.Err(); err != nil {
+		log.Println(err)
+	}
 }
