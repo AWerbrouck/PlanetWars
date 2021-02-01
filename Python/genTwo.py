@@ -1,4 +1,5 @@
-import sys, json, random
+import sys, json, random, numpy
+import scipy.spatial.distance
 
 def move(moves):
     record = {'moves': moves}
@@ -26,8 +27,24 @@ for line in sys.stdin:
         move(moves)
 
 # def OptimalDistance(my_planets, other_planets):
-#     return True  
+#     return Boolean  
 
 # TODO: Euclidean distance
 
+
+def ConstructCoordMatrix():
+
+    CoordMatrix = [][]
+    return CoordMatrix
+
+
+# Matrix with coordinates to find nearest neighbour
+
+def NearestNeighbour(CoordMatrix,sX,sY):
+    # TODO
+    return False
     
+
+
+def GainedInDistance(sX,sY,oX,oY):
+    return True
