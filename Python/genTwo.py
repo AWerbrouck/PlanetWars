@@ -7,24 +7,27 @@ def move(moves):
 
 for line in sys.stdin:
     state = json.loads(line)
-
+    moves = []
     # find planet with most ships
     my_planets = [p for p in state['planets'] if p['owner'] == 1]
     other_planets = [p for p in state['planets'] if p['owner'] != 1]
     if not my_planets or not other_planets:
-        move([])
+        move(moves)
     else:
         for planet in my_planets:
             dest = min(other_planets, key=lambda p: p['ship_count'])
             if planet['ship_count'] > dest['ship_count'] + 5:
                 amount = planet['ship_count'] - dest['ship_count']
-                move([{
+                moves.append({
                     'origin': planet['name'],
                     'destination': dest['name'],
                     'ship_count': planet['ship_count'] - amount +  5
-                }])
-            else:
-                move([])
+                })
+        move(moves)
 
 # def OptimalDistance(my_planets, other_planets):
-#     return True
+#     return True  
+
+# TODO: Euclidean distance
+
+    
