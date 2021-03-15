@@ -15,8 +15,8 @@ def closest(planets, mx, my, n=1):
     dist = 1000
     clpl = ""
     for plonet in planets:
-        if numpy.sqrt((planet['x'] - mx) ** 2 + (planet['y'] - my) ** 2) < dist:
-            dist = numpy.sqrt((planet['x'] - mx) ** 2 + (planet['y'] - my) ** 2)
+        if numpy.sqrt((plonet['x'] - mx) ** 2 + (plonet['y'] - my) ** 2) < dist:
+            dist = numpy.sqrt((plonet['x'] - mx) ** 2 + (plonet['y'] - my) ** 2)
             clpl = plonet
     return clpl
 
@@ -31,17 +31,12 @@ for line in sys.stdin:
         move(moves)
     else:
         for planet in my_planets:
-            i = random.choice(range(0, 2))
-            if i == 1:
-                dest = min(other_planets, key=lambda p: p['ship_count'])
-            else:
-                dest = closest(other_planets, planet["x"], planet["y"])
+            dest = min(other_planets, key=lambda p: p['ship_count'])
             if planet['ship_count'] > dest['ship_count'] + 5:
-                amount = planet['ship_count'] - dest['ship_count']
                 moves.append({
                     'origin': planet['name'],
                     'destination': dest['name'],
-                    'ship_count': planet['ship_count'] - amount + 5
+                    'ship_count': planet['ship_count'] - 1
                 })
         move(moves)
 
